@@ -9,7 +9,7 @@ type CodeContent struct {
 	FileName      string `gorm:"type:varchar(150);not null"`
 }
 
-func CodeContentModelToDomain(codeContent CodeContent) *domain.CodeContent {
+func CodeContentModelToDomain(codeContent *CodeContent) *domain.CodeContent {
 	return &domain.CodeContent{
 		ID:            codeContent.ID,
 		IdeChatRoomID: codeContent.IdeChatRoomID,
