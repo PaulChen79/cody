@@ -14,7 +14,6 @@ import (
 	"cody/internal/repo/gorm"
 	"cody/internal/service"
 	gorm2 "gorm.io/gorm"
-	"log"
 	"sync"
 )
 
@@ -65,12 +64,10 @@ func NewDB() (*gorm2.DB, error) {
 	var err error
 	if db == nil {
 		dbOnce.Do(func() {
-			log.Println("connect db")
 			db, err = database.DatabaseConnection(NewConfig().DB)
 			if err != nil {
 				return
 			}
-			log.Println("connect db success")
 		})
 	}
 	return db, err
@@ -82,9 +79,7 @@ var configOnce sync.Once
 
 func NewConfig() *config.Config {
 	configOnce.Do(func() {
-		log.Println("read config")
 		cg = config.NewConfig()
-		log.Println("read config success")
 	})
 	return cg
 }
