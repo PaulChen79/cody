@@ -1,1 +1,4 @@
 config/config.yml
+test/
+temp_code_files/
+log/

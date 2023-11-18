@@ -22,7 +22,7 @@ func main() {
 	}
 
 	router := route.SetupRouter(config)
-	router.Run()
+	router.Run(config.Gin.Host + ":" + config.Gin.Port)
 }
 
 func BackgroundWorker() {

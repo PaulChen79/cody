@@ -1,3 +1,7 @@
 package domain
 
-type Service interface{}
+import "github.com/gorilla/websocket"
+
+type Service interface {
+	HandleRunCodeWsMessage(ws *websocket.Conn)
+}

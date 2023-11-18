@@ -9,11 +9,12 @@ import (
 )
 
 type Config struct {
-	Env   string
-	Gin   *GinConfig
-	DB    *DBConfig
-	Jwt   *JwtConfig
-	Redis *RedisConfig
+	Env          string
+	TempCodePath string
+	Gin          *GinConfig
+	DB           *DBConfig
+	Jwt          *JwtConfig
+	Redis        *RedisConfig
 }
 
 type GinConfig struct {
@@ -77,7 +78,8 @@ func NewConfig() *Config {
 		log.Fatal(err)
 	}
 	return &Config{
-		Env: viper.GetString("env"),
+		Env:          viper.GetString("env"),
+		TempCodePath: viper.GetString("temp_code_path"),
 		Gin: &GinConfig{
 			Host:   viper.GetString("server.host"),
 			Domain: viper.GetString("server.domain"),
