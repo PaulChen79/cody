@@ -8,9 +8,9 @@ import (
 )
 
 type UserChatRoom struct {
-	UserID     uint      `gorm:"primaryKey;autoIncrement:false"`
-	ChatRoomID uint      `gorm:"primaryKey;autoIncrement:false"`
-	LastReadAt time.Time `gorm:"not null"`
+	UserID     uint `gorm:"primaryKey;autoIncrement:false"`
+	ChatRoomID uint `gorm:"primaryKey;autoIncrement:false"`
+	LastReadAt *time.Time
 }
 
 func AddUserChatRoomTable() *gormigrate.Migration {

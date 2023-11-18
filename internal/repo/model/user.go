@@ -11,11 +11,20 @@ type User struct {
 	IdeChatRooms []IdeChatRoom `gorm:"many2many:user_ide_chat_rooms;"`
 }
 
-func UserModelToDomain(user User) *domain.User {
+func UserModelToDomain(user *User) *domain.User {
 	return &domain.User{
 		ID:       user.ID,
 		Email:    user.Email,
 		Username: user.Username,
+	}
+}
+
+func UserModelToInternalDomain(user User) *domain.UserInternal {
+	return &domain.UserInternal{
+		ID:       user.ID,
+		Email:    user.Email,
+		Username: user.Username,
+		Password: user.Password,
 	}
 }
 

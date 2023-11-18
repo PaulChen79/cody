@@ -11,7 +11,6 @@ import (
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 	"gorm.io/gorm/logger"
-	"gorm.io/gorm/schema"
 )
 
 func main() {
@@ -35,10 +34,7 @@ func main() {
 
 	db, err = gorm.Open(postgres.Open(dsn), &gorm.Config{
 		AllowGlobalUpdate: false,
-		NamingStrategy: schema.NamingStrategy{
-			SingularTable: true,
-		},
-		Logger: logger.Default.LogMode(logger.Info),
+		Logger:            logger.Default.LogMode(logger.Info),
 	})
 	if err != nil {
 		zap.S().Warnf("DatabaseConnection - err: %v", err)
@@ -51,10 +47,10 @@ func main() {
 
 	m := gormigrate.New(db, gormigrate.DefaultOptions, []*gormigrate.Migration{
 		v1.AddUserTable(),
-		v1.AddMessageTable(),
 		v1.AddCodeContentTable(),
 		v1.AddIdeChatRoomTable(),
 		v1.AddChatRoomTable(),
+		v1.AddMessageTable(),
 		v1.AddUserChatRoomTable(),
 		v1.AddUserIdeChatRoomTable(),
 	})

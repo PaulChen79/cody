@@ -14,7 +14,7 @@ type Message struct {
 	Sequence   uint      `gorm:"type:int;autoIncrement"`
 }
 
-func MessageModelToDomain(message Message) *domain.Message {
+func MessageModelToDomain(message *Message) *domain.Message {
 	return &domain.Message{
 		ID:         message.ID,
 		SendFrom:   message.SendFrom,
