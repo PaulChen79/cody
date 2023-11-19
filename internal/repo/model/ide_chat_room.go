@@ -24,7 +24,7 @@ func IdeChatRoomModelToDomain(ideChatRoom *IdeChatRoom) *domain.IdeChatRoom {
 		RoomName:     ideChatRoom.RoomName,
 		RoomUUID:     ideChatRoom.RoomUUID,
 		CodeContents: domainCodeContents,
-		ChatRoom:     ChatRoomModelToDomain(&ideChatRoom.ChatRoom),
+		ChatRoom:     ChatRoomModelToFullInfoDomain(&ideChatRoom.ChatRoom),
 	}
 }
 

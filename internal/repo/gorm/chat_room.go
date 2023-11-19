@@ -8,7 +8,7 @@ import (
 	"gorm.io/gorm"
 )
 
-func (repo *repository) CreateChatRoom(tx *gorm.DB, chatRoomForUpdate *domain.ChatRoomFullInfo) (*domain.ChatRoom, error) {
+func (repo *repository) CreateChatRoom(tx *gorm.DB, chatRoomForUpdate *domain.ChatRoomFullInfo) (*domain.ChatRoomFullInfo, error) {
 	if tx == nil {
 		tx = repo.db
 	}
@@ -20,7 +20,7 @@ func (repo *repository) CreateChatRoom(tx *gorm.DB, chatRoomForUpdate *domain.Ch
 		return nil, err
 	}
 
-	dc := model.ChatRoomModelToDomain(newChatRoom)
+	dc := model.ChatRoomModelToFullInfoDomain(newChatRoom)
 
 	return dc, nil
 }
@@ -42,7 +42,7 @@ func (repo *repository) UpdateChatRoom(tx *gorm.DB, chatRoomID uint, chatRoomFor
 	return dc, nil
 }
 
-func (repo *repository) GetChatRoomByID(chatRoomID uint) (*domain.ChatRoom, error) {
+func (repo *repository) GetChatRoomByID(chatRoomID uint) (*domain.ChatRoomFullInfo, error) {
 	var chatRoom model.ChatRoom
 
 	if err := repo.db.Where("id = ?", chatRoomID).First(&chatRoom).Error; err != nil {
@@ -50,7 +50,7 @@ func (repo *repository) GetChatRoomByID(chatRoomID uint) (*domain.ChatRoom, erro
 		return nil, err
 	}
 
-	dc := model.ChatRoomModelToDomain(&chatRoom)
+	dc := model.ChatRoomModelToFullInfoDomain(&chatRoom)
 
 	return dc, nil
 }

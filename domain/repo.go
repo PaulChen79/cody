@@ -10,9 +10,9 @@ type Repository interface {
 	GetUserInternalByID(userID uint) (*UserInternal, error)
 
 	// * Chat Room
-	CreateChatRoom(tx *gorm.DB, chatRoomForUpdate *ChatRoomFullInfo) (*ChatRoom, error)
+	CreateChatRoom(tx *gorm.DB, chatRoomForUpdate *ChatRoomFullInfo) (*ChatRoomFullInfo, error)
 	UpdateChatRoom(tx *gorm.DB, chatRoomID uint, chatRoomForUpdate *ChatRoomFullInfo) (*ChatRoom, error)
-	GetChatRoomByID(chatRoomID uint) (*ChatRoom, error)
+	GetChatRoomByID(chatRoomID uint) (*ChatRoomFullInfo, error)
 
 	// * IDE Chat Room
 	CreateIdeChatRoom(tx *gorm.DB, ideChatRoomForCreate *IdeChatRoom) (*IdeChatRoom, error)

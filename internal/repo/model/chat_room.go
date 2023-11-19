@@ -20,6 +20,23 @@ func ChatRoomModelToDomain(chatRoom *ChatRoom) *domain.ChatRoom {
 	}
 }
 
+func ChatRoomModelToFullInfoDomain(chatRoom *ChatRoom) *domain.ChatRoomFullInfo {
+	domainMessages := []*domain.Message{}
+
+	for i := range chatRoom.Messages {
+		dm := MessageModelToDomain(&chatRoom.Messages[i])
+		domainMessages = append(domainMessages, dm)
+	}
+
+	return &domain.ChatRoomFullInfo{
+		ID:            chatRoom.ID,
+		RoomName:      chatRoom.RoomName,
+		IsGroup:       chatRoom.IsGroup,
+		IdeChatRoomID: chatRoom.IdeChatRoomID,
+		Messages:      domainMessages,
+	}
+}
+
 func ChatRoomDomainToModel(chatRoom *domain.ChatRoom) *ChatRoom {
 	return &ChatRoom{
 		ID:            chatRoom.ID,

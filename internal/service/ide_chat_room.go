@@ -32,7 +32,7 @@ func (svc *service) CreateIdeChatRoom(creatorID uint, chatRoomID *uint) (*domain
 		return nil, err
 	}
 
-	var chatRoom *domain.ChatRoom
+	var chatRoom *domain.ChatRoomFullInfo
 
 	if chatRoomID == nil {
 		chatRoom, err = svc.repo.CreateChatRoom(tx, &domain.ChatRoomFullInfo{
