@@ -11,11 +11,11 @@ type IdeChatRoom struct {
 	CodeContents []CodeContent `gorm:"foreignKey:IdeChatRoomID"`
 }
 
-func IdeChatRoomModelToDomain(ideChatRoom IdeChatRoom) *domain.IdeChatRoom {
+func IdeChatRoomModelToDomain(ideChatRoom *IdeChatRoom) *domain.IdeChatRoom {
 	domainCodeContents := []*domain.CodeContent{}
 
 	for i := range ideChatRoom.CodeContents {
-		dcc := CodeContentModelToDomain(ideChatRoom.CodeContents[i])
+		dcc := CodeContentModelToDomain(&ideChatRoom.CodeContents[i])
 		domainCodeContents = append(domainCodeContents, dcc)
 	}
 
@@ -24,7 +24,7 @@ func IdeChatRoomModelToDomain(ideChatRoom IdeChatRoom) *domain.IdeChatRoom {
 		RoomName:     ideChatRoom.RoomName,
 		RoomUUID:     ideChatRoom.RoomUUID,
 		CodeContents: domainCodeContents,
-		ChatRoom:     ChatRoomModelToDomain(ideChatRoom.ChatRoom),
+		ChatRoom:     ChatRoomModelToFullInfoDomain(&ideChatRoom.ChatRoom),
 	}
 }
 

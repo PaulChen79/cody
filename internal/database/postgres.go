@@ -9,7 +9,6 @@ import (
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 	"gorm.io/gorm/logger"
-	"gorm.io/gorm/schema"
 )
 
 func DatabaseConnection(config *config.DBConfig) (*gorm.DB, error) {
@@ -28,10 +27,7 @@ func DatabaseConnection(config *config.DBConfig) (*gorm.DB, error) {
 
 	db, err = gorm.Open(postgres.Open(dsn), &gorm.Config{
 		AllowGlobalUpdate: false,
-		NamingStrategy: schema.NamingStrategy{
-			SingularTable: true,
-		},
-		Logger: logger.Default.LogMode(logger.Info),
+		Logger:            logger.Default.LogMode(logger.Info),
 	})
 	if err != nil {
 		return nil, err
