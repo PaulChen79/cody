@@ -67,7 +67,7 @@ func TestTestFunc(t *testing.T) {
 				a: math.MinInt / 2,
 				b: math.MinInt / 2,
 			},
-			want:    math.MinInt + 1,
+			want:    math.MinInt,
 			wantErr: false,
 		},
 	}
@@ -147,7 +147,7 @@ func TestTestFunc1(t *testing.T) {
 				a: math.MinInt / 2,
 				b: math.MinInt / 2,
 			},
-			want:    math.MinInt + 1,
+			want:    math.MinInt,
 			wantErr: false,
 		},
 	}
@@ -227,7 +227,7 @@ func TestTestFunc2(t *testing.T) {
 				a: math.MinInt / 2,
 				b: math.MinInt / 2,
 			},
-			want:    math.MinInt + 1,
+			want:    math.MinInt,
 			wantErr: false,
 		},
 	}
@@ -307,7 +307,7 @@ func TestTestFunc3(t *testing.T) {
 				a: math.MinInt / 2,
 				b: math.MinInt / 2,
 			},
-			want:    math.MinInt + 1,
+			want:    math.MinInt,
 			wantErr: false,
 		},
 	}
