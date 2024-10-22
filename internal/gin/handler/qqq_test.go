@@ -73,7 +73,7 @@ func TestTestFunc(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			got, err := TestFunc3(tt.args.a, tt.args.b)
+			got, err := TestFunc(tt.args.a, tt.args.b)
 			if (err != nil) != tt.wantErr {
 				t.Errorf("TestFunc3() error = %v, wantErr %v", err, tt.wantErr)
 				return
@@ -153,7 +153,7 @@ func TestTestFunc1(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			got, err := TestFunc3(tt.args.a, tt.args.b)
+			got, err := TestFunc1(tt.args.a, tt.args.b)
 			if (err != nil) != tt.wantErr {
 				t.Errorf("TestFunc3() error = %v, wantErr %v", err, tt.wantErr)
 				return
@@ -233,7 +233,7 @@ func TestTestFunc2(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			got, err := TestFunc3(tt.args.a, tt.args.b)
+			got, err := TestFunc2(tt.args.a, tt.args.b)
 			if (err != nil) != tt.wantErr {
 				t.Errorf("TestFunc3() error = %v, wantErr %v", err, tt.wantErr)
 				return
